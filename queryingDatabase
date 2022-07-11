@@ -1,0 +1,37 @@
+import boto3
+from boto3.dynamodb.conditions import Key, Attr
+
+dynamodb = boto3.resource('dynamodb', region_name='YOUR REGION')
+
+FLAG = True
+tableName = 'YOUR COURSE NAME'
+table = dynamodb.Table(tableName)
+
+
+while FLAG is True:
+    Attribte 1 = input("Attribte 1: ")
+    Attribte 2 = input("Attribute 2: ")
+    
+    if Atttribute 1 == "":
+        print("Attribte 1 and Attribte 2 are required.")
+        pass
+    elif Attribte 1 == "":
+        print(Attribte 1 and Attribte 2 are required.")
+        pass
+    else:
+    
+        response = table.scan(
+        FilterExpression=Attr('Attribte 1').eq(Attribte 1.upper()) & Attr('Attribte 2').eq(int(Attribte 2))) # partition key and sort key
+    
+        # 'Items' is the full item list from the "Batch Write Item" script
+        items = response['Items']
+        for i in response['Items']:
+        # Attribte 5 is an added attribute that you can sort through based on the sorting/partion key
+            print("The title of", Attribte 1, Attribte 2, "is", i['Attribte 5'] + ".") 
+    
+        choice = input("\nWould you like to search for another title? (Y or N)\n")
+        if choice is "Y":
+            continue
+        elif choice is "N":
+            print("\nGood bye.")
+            break
