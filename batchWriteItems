@@ -1,0 +1,26 @@
+import boto3
+
+dynamodb = boto3.resource('dynamodb', region_name='YOUR REGION')
+
+tableName = 'YOUR TABLE NAME'
+table = dynamodb.Table(tableName)
+
+with table.batch_writer() as batch: # allows you to write multiple items THIS IS DIFFERENT FROM "put-item"
+    batch.put_item(
+        Item={
+            'Attribute 1': "information",
+            'Attribute 2': "information",
+            'Attribute 3': "information",
+            'Attribute 4': "information",
+            'Attribute 5': "information"
+        }
+    )
+    batch.put_item(
+        Item={
+            'Attribute 1': "information",
+            'Attribute 2': "information",
+            'Attribute 3': "information",
+            'Attribute 4': "information",
+            'Attribute 5': "information"
+        }
+    )
